@@ -2,6 +2,8 @@ package ru.job4j.currency;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +12,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.DecimalFormat;
+import java.util.Calendar;
 
 import ru.job4j.currency.store.CurrencyBaseHelper;
 
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             refreshUI();
         }
         initBroadcastReceiver();
+        initAlarm();
     }
 
     @Override
@@ -47,10 +53,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshUI() {
-        usd.setText(String.valueOf(currency.getRates().getUsd()));
-        eur.setText(String.valueOf(currency.getRates().getEur()));
-        aud.setText(String.valueOf(currency.getRates().getAud()));
-        gdp.setText(String.valueOf(currency.getRates().getGbp()));
+        DecimalFormat f = new DecimalFormat("0.00");
+        usd.setText(f.format(currency.getRates().getUsd()));
+        eur.setText(f.format(currency.getRates().getEur()));
+        aud.setText(f.format(currency.getRates().getAud()));
+        gdp.setText(f.format(currency.getRates().getGbp()));
         date.setText(String.valueOf(currency.getDate()));
     }
 
@@ -64,6 +71,14 @@ public class MainActivity extends AppCompatActivity {
                 CurrencyPullService.ACTION_MYINTENTSERVICE);
         intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
         registerReceiver(mMyBroadcastReceiver, intentFilter);
+    }
+
+    private void initAlarm() {
+        AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmBroadcastReceiver.class);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis(),
+                1000 * 2, alarmIntent);
     }
 
     public class MyBroadcastReceiver extends BroadcastReceiver {
@@ -87,4 +102,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+
 }

@@ -45,7 +45,7 @@ public class CurrencyPullService extends JobIntentService {
             @Override
             public void onResponse(@NotNull Call<Currency> call, @NotNull Response<Currency> response) {
                 CurrencyBaseHelper store = CurrencyBaseHelper.getInstance(CurrencyPullService.this);
-                store.addCurrency(response.body());
+                store.addCurrency(convertCurrency(response.body()));
                 Intent responseIntent = new Intent();
                 responseIntent.setAction(ACTION_MYINTENTSERVICE);
                 responseIntent.addCategory(Intent.CATEGORY_DEFAULT);
@@ -65,5 +65,14 @@ public class CurrencyPullService extends JobIntentService {
                 sendBroadcast(responseIntent);
             }
         });
+    }
+
+    private Currency convertCurrency(Currency currency){
+        Rates rates = currency.getRates();
+        rates.setUsd(1d/rates.getUsd());
+        rates.setEur(1d/rates.getEur());
+        rates.setAud(1d/rates.getAud());
+        rates.setGbp(1d/rates.getGbp());
+        return currency;
     }
 }

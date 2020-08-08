@@ -7,13 +7,14 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/gdp"
+        android:id="@+id/gbp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="GDP"
+        android:text="GBP"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/gdp_value"
         app:layout_constraintHorizontal_bias="0.5"
@@ -28,10 +29,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="empty"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/gdp"
-        app:layout_constraintTop_toTopOf="@+id/gdp" />
+        app:layout_constraintStart_toEndOf="@+id/gbp"
+        app:layout_constraintTop_toTopOf="@+id/gbp" />
 
     <TextView
         android:id="@+id/aud"
@@ -41,7 +43,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="AUD"
-        app:layout_constraintBottom_toTopOf="@+id/gdp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintBottom_toTopOf="@+id/gbp"
         app:layout_constraintEnd_toStartOf="@+id/aud_value"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -55,6 +58,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="empty"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/aud"
@@ -68,6 +72,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="EURO"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toTopOf="@+id/aud"
         app:layout_constraintEnd_toStartOf="@+id/eur_value"
         app:layout_constraintHorizontal_bias="0.5"
@@ -82,6 +87,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="empty"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/eur"
@@ -94,6 +100,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="USD"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toTopOf="@+id/eur"
         app:layout_constraintEnd_toStartOf="@+id/usd_value"
         app:layout_constraintHorizontal_bias="0.5"
@@ -109,6 +116,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="empty"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/usd"
@@ -119,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="RUB value:"
+        android:text="Ruble's exchange rate:"
         app:layout_constraintBottom_toTopOf="@+id/usd"
         app:layout_constraintEnd_toEndOf="@+id/usd_value"
         app:layout_constraintStart_toStartOf="@+id/usd" />
@@ -131,7 +139,7 @@
         android:layout_marginTop="8dp"
         android:text="Update"
         app:layout_constraintEnd_toEndOf="@+id/gdp_value"
-        app:layout_constraintStart_toStartOf="@+id/gdp"
+        app:layout_constraintStart_toStartOf="@+id/gbp"
         app:layout_constraintTop_toBottomOf="@+id/date_of_update" />
 
     <TextView
@@ -140,7 +148,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/gdp_value"
-        app:layout_constraintStart_toStartOf="@+id/gdp"
-        app:layout_constraintTop_toBottomOf="@+id/gdp" />
+        app:layout_constraintStart_toStartOf="@+id/gbp"
+        app:layout_constraintTop_toBottomOf="@+id/gbp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
